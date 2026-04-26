@@ -1,70 +1,77 @@
-Full-Stack Café Management System
-A robust MERN-stack application designed to streamline the reservation and pre-ordering lifecycle for the hospitality industry. The system integrates real-time table availability logic, dynamic billing, and automated customer communication.
 
-Key Features
-Table Reservation System: Implements concurrency control to limit bookings to five tables per time slot, preventing over-capacity.
+# Enterprise Cafe Management and Reservation System
 
-Pre-order and Billing Engine: Real-time calculation of subtotal, 18% GST, and 2% service charges with persistent data storage.
+This repository contains a full-stack solution designed to digitize the reservation, pre-ordering, and billing lifecycle for hospitality businesses. The application leverages the MERN stack to provide a robust interface for both customers and administrators.
 
-Dual-Mode Payment Simulation: Supports "Pay After Visiting" and "Online Payment" via dynamic UPI QR code generation.
+## Project Overview
 
-Automated SMTP Workflow: Admin-controlled approval system that triggers professionally formatted HTML receipts via Nodemailer.
+The system provides a seamless end-to-end workflow starting from client-side table booking to administrative approval and automated billing. It addresses common operational challenges such as overbooking through algorithmic concurrency control and ensures financial transparency with a dynamic tax and service charge engine.
 
-Admin Dashboard: Centralized interface for managing live reservation requests and full CRUD operations for the café menu.
+## Core Features
 
-Tech Stack
-Frontend: React.js, Axios
+### 1. Advanced Reservation Engine
+* **Automated Slot Management:** Implements server-side logic to limit reservations to five tables per time slot, ensuring optimal resource allocation.
+* **Pre-order Integration:** Enables customers to select menu items during the booking process, reducing onsite wait times and improving kitchen throughput.
 
-Backend: Node.js, Express.js
+### 2. Financial and Billing Logic
+* **Dynamic Receipt Generation:** Client-side calculation of subtotals, 18% GST, and 2% service charges.
+* **Hybrid Payment Processing:** Supports simulated online UPI payments with dynamic QR generation and offline "Pay at Venue" options.
 
-Database: MongoDB (Mongoose ODM)
+### 3. Administrative Control Plane
+* **Reservation Oversight:** A dedicated dashboard for real-time monitoring of booking requests, payment statuses, and customer data.
+* **Menu CRUD Operations:** A complete management interface allowing administrators to create, update, or remove menu offerings without direct database manipulation.
 
-Authentication & Security: Dotenv
+### 4. Automated Communication Workflow
+* **SMTP Integration:** Utilizes secure email protocols to dispatch professionally formatted HTML receipts and confirmation messages to users upon administrative approval.
 
-Communication: Nodemailer (SMTP)
+## Technical Specifications
 
-Project Architecture
-The application follows a Model-View-Controller (MVC) design pattern on the backend to ensure scalability and maintainable code. The frontend utilizes functional components and hooks to manage complex states across the multi-step reservation process.
+### Frontend
+* **Library:** React.js
+* **State Management:** Functional components and React Hooks
+* **API Client:** Axios for asynchronous HTTP requests
 
-Installation and Setup
-Clone the repository:
+### Backend
+* **Runtime Environment:** Node.js
+* **Framework:** Express.js
+* **Communication:** Nodemailer for SMTP-based messaging
 
-Bash
-git clone https://github.com/yourusername/intermezzo.git
-Install dependencies for both Client and Server:
+### Database
+* **Technology:** MongoDB
+* **Object Modeling:** Mongoose ODM
+* **Schema Design:** Structured NoSQL documents for reservations, menu items, and reviews.
 
-Bash
-cd client && npm install
-cd ../server && npm install
-Configure Environment Variables:
-Create a .env file in the server directory based on the provided .env.example.
+## Installation and Configuration
 
-Run the application:
+### Prerequisites
+* Node.js (v14.x or higher)
+* MongoDB Atlas account or local MongoDB instance
 
-Start the server: npm start (inside /server)
+### Environment Setup
+Configure a `.env` file in the server directory with the following variables:
+* `PORT`: The port number for the backend server.
+* `MONGO_URI`: The connection string for the MongoDB database.
+* `EMAIL_USER`: The SMTP service email address.
+* `EMAIL_PASS`: The application-specific password for the SMTP service.
 
-Start the client: npm start (inside /client)
+### Execution
+1. Install dependencies in both `/client` and `/server` directories using `npm install`.
+2. Launch the backend server using `npm start`.
+3. Launch the frontend development server using `npm start`.
 
-API Endpoints
-Reservations
-POST /api/reserve - Creates a new reservation request.
+## API Architecture
 
-GET /api/reservations - Retrieves all reservations for admin view.
+### Reservation Endpoints
+* `POST /api/reserve`: Validates and persists new booking requests.
+* `GET /api/reservations`: Retrieves all records for administrative review.
+* `PATCH /api/reservations/:id`: Updates booking status and triggers automated notifications.
 
-PATCH /api/reservations/:id - Updates status and triggers email notification.
+### Menu Endpoints
+* `GET /api/menu`: Returns the current list of available items.
+* `POST /api/menu`: Enables the addition of new inventory.
+* `PUT /api/menu/:id`: Modifies existing item attributes.
+* `DELETE /api/menu/:id`: Removes items from the active menu.
 
-Menu
-GET /api/menu - Fetches all current menu items.
-
-POST /api/menu - Adds a new dish (Admin only).
-
-PUT /api/menu/:id - Updates existing dish details.
-
-DELETE /api/menu/:id - Removes a dish from the system.
-
-Future Enhancements
-Integration of real-world payment gateways (Stripe/Razorpay).
-
-Machine Learning-based personalized menu recommendations.
-
-Automated SMS notifications using Twilio API.
+## Security Considerations
+* **Credential Masking:** Sensitive data is managed through environment variables to prevent exposure in version control.
+* **Validation:** Server-side checks are implemented to ensure data integrity during the reservation and billing processes.
