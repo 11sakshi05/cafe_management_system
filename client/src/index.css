@@ -1,0 +1,117 @@
+/*
+#root {
+  width: 1126px;
+  max-width: 100%;
+  margin: 0 auto;
+  text-align: center;
+  border-inline: 1px solid var(--border);
+  min-height: 100svh;
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+}
+
+h1,
+h2 {
+  font-family: var(--heading);
+  font-weight: 500;
+  color: var(--text-h);
+}
+
+h1 {
+  font-size: 56px;
+  letter-spacing: -1.68px;
+  margin: 32px 0;
+  @media (max-width: 1024px) {
+    font-size: 36px;
+    margin: 20px 0;
+  }
+}
+h2 {
+  font-size: 24px;
+  line-height: 118%;
+  letter-spacing: -0.24px;
+  margin: 0 0 8px;
+  @media (max-width: 1024px) {
+    font-size: 20px;
+  }
+}
+p {
+  margin: 0;
+}
+
+code,
+.counter {
+  font-family: var(--mono);
+  display: inline-flex;
+  border-radius: 4px;
+  color: var(--text-h);
+}
+
+code {
+  font-size: 15px;
+  line-height: 135%;
+  padding: 4px 8px;
+  background: var(--code-bg);
+}
+*/
+
+/* Add to your existing index.css */
+.glass-card {
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(220, 174, 150, 0.3);
+  box-shadow: 0 8px 32px 0 rgba(74, 55, 40, 0.05);
+  border-radius: 20px;
+}
+
+/* The "Lift" Effect for Buttons and Cards */
+.btn-elegant, .menu-card, .glass-card {
+  transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.3s ease;
+}
+
+.btn-elegant:hover, .menu-card:hover {
+  transform: translateY(-5px); /* Moves it up 5 pixels */
+  box-shadow: 0 12px 30px rgba(74, 55, 40, 0.2);
+  filter: brightness(1.1); /* Slightly brightens the button */
+}
+
+.btn-elegant:active {
+  transform: translateY(0); /* "Click" feel */
+}
+
+
+/* Force all inputs and buttons to share the same DNA */
+input, select, textarea, button, .glass-card, .menu-card {
+  border-radius: 12px !important; /* Standardized rounding */
+  border: 1px solid rgba(220, 174, 150, 0.4);
+}
+
+/* Subtle focus ring for professionalism */
+input:focus, textarea:focus {
+  border-color: var(--dusty-rose) !important;
+  box-shadow: 0 0 0 4px rgba(220, 174, 150, 0.1);
+  outline: none;
+}
+
+
+.hero-gradient {
+  background: linear-gradient(135deg, #FFF8F5 0%, #DCAE96 100%);
+}
+
+.btn-elegant {
+  background: var(--espresso);
+  color: var(--dusty-rose);
+  padding: 12px 35px;
+  border-radius: 50px; /* Fully rounded for a modern look */
+  text-transform: uppercase;
+  font-weight: 600;
+  letter-spacing: 2px;
+  border: 1px solid var(--espresso);
+  cursor: pointer;
+}
+
+.btn-elegant:hover {
+  background: transparent;
+  color: var(--espresso);
+}
